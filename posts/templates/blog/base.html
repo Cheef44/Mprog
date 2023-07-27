@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Base-css-->
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/background/background.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/header/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/header/_logo/header_logo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/header/_menu/header_menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/header/_text-menu/header_text-menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/content/content.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/header/_enter/header_enter.css' %}">
+    <!--Posts-css-->
+    <link rel="stylesheet" href="{% static 'css/posts/posts/posts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/posts/_title/posts_title.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/posts/post/post.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/posts/post/_content/post_content.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/posts/post/_content-title/post_content-title.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/posts/post/_date/post_date.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/posts/post/_image/post_image.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/posts/post/_main-text/post_main-text.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/posts/_select/posts_select.css' %}">
+    <!--Post_detail-css-->
+    <link rel="stylesheet" href="{% static 'css/post-detail/header-post/_image/header-post_image.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/header-post/_block-title/header-post_block-title.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/header-post/_block-title/_title/header-post_title.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/header-post/_block-title/_date/header-post_date.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/header-post/_block-title/_auther/header-post_auther.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/header-post/_image/__color/header-post_image__color.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/main-content/main-content.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/main-content/_text/main-content_text.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/main-content/image-menu/image-menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/main-content/image-menu/_images/image-menu_images.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/main-content/background-text/background-text.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/main-content/background-text/__text/background-text_text.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/file/file.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/file/_header/file_header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/file/_header/_header-text/file_header-text.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/file/_button/file_button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/header-post/_block-title/_edit/header-post_edit.css' %}">
+    <!--Post_create-->
+    <link rel="stylesheet" href="{% static 'css/post-detail/header-post/_image/_image-add/header-post_image-add.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/header-post/_block-title/_title-field/header-post_title-field.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/main-content/_main-text-field/main-content_main-text-field.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/header-post/_post-save/header-post_post-save.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/main-content/_image/main-content_image.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/main-content/_image/_image-button/main-content_image-button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/main-content/_text-field/main-content_text-field.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/file/_add/_add-file/file_add-file.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/file/_add/file_add.css' %}">
+    <title>Mprog</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <header class="header">
+        <div>
+            <a href="/" class="header_logo">Mprog</a>
+            <form class="header_enter" method="GET" enctype="multipart/form-data">
+                {{ search.search }}<!--header_enter-->
+            </form>
+            
+        </div>
+        
+        <nav class="header_menu">
+            {% if user.is_authenticated %}
+                <a href="" class="header_text-menu">Создать пост</a>
+            {% endif %}
+            <a href="#" class="header_text-menu">Новости</a>
+            <a href="#" class="header_text-menu">Посты</a>
+            <a href="#" class="header_text-menu">Пользователи</a>
+            <a href="aun" class="header_text-menu">Войти</a>
+        </nav>
+    </header>
+        <div class="content">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+</body>
+</html>

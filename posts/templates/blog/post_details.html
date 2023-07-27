@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% extends 'blog/base.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    {% block content %}
+        
+        <div class="header-post">
+            {% if posts.header_image %}
+                <img src="/media/{{ posts.header_image }}" alt="" class="header-post_image">
+            {% endif %}
+            {% if not posts.header_image %}
+                <div class="header-post_image header-post_image__color"></div>
+            {% endif %}
+            <div class="header-post_block-title">
+                <div>
+                    <p class="header-post_title">{{ posts.title }}</p>
+                    <p class="header-post_date">{{ posts.published_date }}</p>
+                </div>
+                <div>
+                    <p class="header-post_auther">Автор: {{ posts.author }}</p>
+                    {% if user == posts.author %}
+                        <a href="{% url 'post_create' id=posts.id %}" class="header-post_edit">Редактировать</a>
+                    {% endif %}
+                </div>
+                
+            </div>
+        </div>
+        <div class="main-content">
+            <p class="main-content_text">{{ posts.main_text|linebreaksbr }}</p>
+            {% if posts.image or posts.image1 or posts.image2 %}
+                <div class="image-menu">
+                    {% if posts.image %}
+                        <img src="/media/{{ posts.image }}" alt="" class="image-menu_images">
+                    {% endif %}
+                    {% if posts.image1 %}
+                        <img src="/media/{{ posts.image1 }}" alt="" class="image-menu_images">
+                    {% endif %}
+                    {% if posts.image2 %}
+                        <img src="/media/{{ posts.image2 }}" alt="" class="image-menu_images">
+                    {% endif %}
+                </div>
+            {% endif %}
+                
+            {% if posts.text %}
+                <div class="background-text">
+                    <p class="background-text_text">{{ posts.text|linebreaksbr }}</p>
+                </div>
+            {% endif %}
+        </div>
+        {% if posts.file %}
+            <div class="file">
+                <div class="file_header">
+                    <p class="file_header-text">Скачать</p>
+                </div>
+                <button class="file_button"><a href="/media/{{ posts.file }}" download>Скачать</a></button>
+            </div>
+        {% endif %}
+        
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    
+    {% extends 'blog/base.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+        <div class="posts">
+            <!--<p class="posts_title">Посты</p>-->
+            <!--<select name="" id="id_filter" onchange="window.location.href=this.options[this.selectedIndex].value">-->
+                <!--<option value="?sort_by=date">По дате (от познего к раннему)</option>-->
+                <!--<option value="?sort_by=renav">По дате (от раннего к познему)</option>-->
+                <!--<option value="#">По популярности (от менее популярного)</option>-->
+                <!--<option value="#">По популярности (от популярного)</option>-->
+            <!--</select>-->
+            
+            {% for post in post %}
+                <div class="post">
+                    {% if post.title_image %}
+                        <img src="media/{{ post.title_image }}" alt="" class="post_image">
+                    {% endif %}
+                    <div class="post_content">
+                        <a href="" class="post_content-title">{{ post.title|linebreaksbr }}</a>
+                        <p class="post_date">{{ post.published_date }}</p>
+                        <p class="post_main-text">{{ post.main_text|linebreaksbr }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+</body>
+</html>

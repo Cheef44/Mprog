@@ -1,0 +1,8 @@
+.post {
+    margin-top: 30px;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    background-color: #282828;
+    padding-right: 100px;
+}

@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+}
+
+input {
+    outline: none;
+}
+
+textarea {
+    outline: none;
+    border: solid black 2px;
+}
