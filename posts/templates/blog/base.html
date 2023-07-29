@@ -67,7 +67,7 @@
         
         <nav class="header_menu">
             {% if user.is_authenticated %}
-                <a href="" class="header_text-menu">Создать пост</a>
+                <a href="{% url 'post_creater' %}" class="header_text-menu">Создать пост</a>
             {% endif %}
             <a href="#" class="header_text-menu">Новости</a>
             <a href="#" class="header_text-menu">Посты</a>
