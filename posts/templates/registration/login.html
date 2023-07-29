@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% extends 'blog/base.html' %}
+</head>
+<body>
+    {% block content %}
+        <div class="login-block login-block__position">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input class="login-block_input" type="text" placeholder="Имя" name='username'>
+                <input class="login-block_input" placeholder="Пароль" name='password' type="password">
+                <button class="login-block_user-save" type="submit" value="Login">Войти</button>
+                <a href="{% url 'user_registration' %}" class="login-block_create-user">Создать аккаунт</a>
+            </form>
+        </div>
+    {% endblock %}
+</body>
+</html>

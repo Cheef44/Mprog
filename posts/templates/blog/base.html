@@ -52,6 +52,12 @@
     <link rel="stylesheet" href="{% static 'css/post-detail/main-content/_text-field/main-content_text-field.css' %}">
     <link rel="stylesheet" href="{% static 'css/post-detail/file/_add/_add-file/file_add-file.css' %}">
     <link rel="stylesheet" href="{% static 'css/post-detail/file/_add/file_add.css' %}">
+    <!--login-->
+    <link rel="stylesheet" href="{% static 'css/login/login-block/login-block.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login/login-block/_input/login-block_input.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login/login-block/_user-save/login-block_user-save.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login/login-block/_create-user/login-block_create-user.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login/login-block/__position/login-block__position.css' %}">
     <title>Mprog</title>
 </head>
 <body>
@@ -72,7 +78,11 @@
             <a href="#" class="header_text-menu">Новости</a>
             <a href="#" class="header_text-menu">Посты</a>
             <a href="#" class="header_text-menu">Пользователи</a>
-            <a href="aun" class="header_text-menu">Войти</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="header_text-menu">{{ user.username }}</a>
+            {% else %}
+                <a href="{% url 'user_login' %}" class="header_text-menu">Войти</a>
+            {% endif %}
         </nav>
     </header>
         <div class="content">
