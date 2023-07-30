@@ -62,8 +62,7 @@ def user_registration(request):
     if request.method == 'POST':
         form = UserReg(request.POST)
         if form.is_valid():
-            print(1)
-            form = form.save(commit=False)
+            form = form.save(commit=False)          
             form.save()
             return redirect('post_list')
     else:
@@ -74,9 +73,7 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(password, username)
         user = authenticate(request, username=username, password=password)
-        print(user)
         if user is not None:
             login(request, user)
             return redirect('post_list')

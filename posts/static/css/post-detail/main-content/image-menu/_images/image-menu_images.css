@@ -1,4 +1,5 @@
 .image-menu_images {
     height: 220px;
     display: inline;
+    border-radius: 9px;
 }
