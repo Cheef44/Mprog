@@ -4,9 +4,7 @@ from django.shortcuts import get_object_or_404
 from .models import Post
 from .form import Search
 from .form import PostEdit
-from .form import UserReg
 from django.utils import timezone
-from django.contrib.auth import authenticate, login, logout
 
 # def post_list(request):
 #     if request.method == 'GET':
@@ -57,24 +55,3 @@ def post_edit(request, id):
     else:
         form = PostEdit(instance=post)
     return render(request, 'blog/post_create.html', {'form':form})
-
-def user_registration(request):
-    if request.method == 'POST':
-        form = UserReg(request.POST)
-        if form.is_valid():
-            form = form.save(commit=False)          
-            form.save()
-            return redirect('post_list')
-    else:
-        form = UserReg()
-    return render(request, 'registration/registration.html', {'user_form':form})
-
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('post_list')
-    return render(request, 'registration/login.html')

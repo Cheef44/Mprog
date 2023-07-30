@@ -10,11 +10,3 @@ class PostEdit(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title_image', 'title', 'main_text', 'image', 'image1', 'image2', 'text', 'file']
-class UserReg(UserCreationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Имя'}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Повторите пароль'}))
-
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
