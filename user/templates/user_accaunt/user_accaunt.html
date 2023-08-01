@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% extends 'blog/base.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+        <div class="user__position">
+            <div class="user-header">
+                <div class="user-header_image">
+                </div>
+                <div class="user-header_menu">
+                    <p class="user-header_username">{{ user.username }}</p>
+                    <p class="user-header_status">Статус:</p>
+                    <div class="user-header_button">
+                        <button class="user-header_create-post"><a href="{% url 'post_creater' %}">Создать пост</a></button>
+                        <button class="user-header_logout"><a href="{% url 'user_logout' %}">Выйти</a></button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="posts">
+                <p class="posts_title">Посты:</p>
+                {% for post in post %}
+                    <div class="post">
+                        {% if post.title_image %}
+                            <img src="{{ post.title_image.url }}" alt="" class="post_image">
+                        {% endif %}
+                        <div class="post_content">
+                            <a href="{% url 'post_detail' id=post.id %}" class="post_content-title">{{ post.title|linebreaksbr }}</a>
+                            <p class="post_date">{{ post.date }}</p>
+                            <p class="post_main-text">{{ post.main_text|linebreaksbr }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

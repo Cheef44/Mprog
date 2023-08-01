@@ -1,0 +1,17 @@
+.user-header_create-post, .user-header_logout {
+    background-color: #D9D9D9;
+    width: 190px;
+    height: 55px;
+    border-radius: 13px;
+    border: solid black 1px;
+    box-sizing: border-box;
+    margin-right: 40px;
+}
+
+.user-header_create-post > a, .user-header_logout > a {
+    color: black;
+    font-size: 24px;
+    font-family: 'Roboto Light';
+   
+    text-align: center;
+}

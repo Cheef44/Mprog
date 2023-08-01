@@ -10,6 +10,7 @@
 <body>
     {% block content %}
         <div class="posts">
+            <p class="posts_title">Посты:</p>
             <!--<p class="posts_title">Посты</p>-->
             <!--<select name="" id="id_filter" onchange="window.location.href=this.options[this.selectedIndex].value">-->
                 <!--<option value="?sort_by=date">По дате (от познего к раннему)</option>-->
@@ -21,7 +22,7 @@
             {% for post in post %}
                 <div class="post">
                     {% if post.title_image %}
-                        <img src="media/{{ post.title_image }}" alt="" class="post_image">
+                        <img src="{{ post.title_image.url }}" alt="" class="post_image">
                     {% endif %}
                     <div class="post_content">
                         <a href="{% url 'post_detail' id=post.id %}" class="post_content-title">{{ post.title|linebreaksbr }}</a>

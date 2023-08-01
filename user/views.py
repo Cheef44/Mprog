@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from .form import UserReg
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
+from posts.models import Post
+
 def user_registration(request):
     if request.method == 'POST':
         form = UserReg(request.POST)
@@ -21,3 +25,13 @@ def user_login(request):
             login(request, user)
             return redirect('post_list')
     return render(request, 'registration/login.html')
+
+def user_logout(request):
+    logout(request)
+    return redirect('user_login')
+
+def user_accaunt(request, id):
+    if request.method == "GET" and request.user.is_authenticated == True:
+        user = get_object_or_404(User, id=id)
+        post = Post.objects.filter(author__id =id).order_by('-date')
+        return render(request, 'user_accaunt/user_accaunt.html', {'user':user, 'post':post})

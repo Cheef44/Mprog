@@ -58,6 +58,15 @@
     <link rel="stylesheet" href="{% static 'css/login/login-block/_user-save/login-block_user-save.css' %}">
     <link rel="stylesheet" href="{% static 'css/login/login-block/_create-user/login-block_create-user.css' %}">
     <link rel="stylesheet" href="{% static 'css/login/login-block/__position/login-block__position.css' %}">
+    <!--user-->
+    <link rel="stylesheet" href="{% static 'css/user_accaunt/user/__position/user__position.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_accaunt/user/user-header/user-header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_accaunt/user/user-header/_image/user-header_image.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_accaunt/user/user-header/_menu/user-header_menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_accaunt/user/user-header/_menu/_username/user-header_username.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_accaunt/user/user-header/_menu/_status/user-header_status.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_accaunt/user/user-header/_menu/_button/user-header_button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_accaunt/user/user-header/_menu/_button/_create-post/user-header_create-post.css' %}">
     <title>Mprog</title>
 </head>
 <body>
@@ -76,7 +85,7 @@
             <a href="#" class="header_text-menu">Посты</a>
             <a href="#" class="header_text-menu">Пользователи</a>
             {% if user.is_authenticated %}
-                <a href="" class="header_text-menu">{{ user.username }}</a>
+                <a href="{% url 'user_accaunt' id=user.id %}" class="header_text-menu">{{ user.username }}</a>
             {% else %}
                 <a href="{% url 'user_login' %}" class="header_text-menu">Войти</a>
             {% endif %}
