@@ -31,17 +31,9 @@
         </div>
         <div class="main-content">
             <p class="main-content_text">{{ post.main_text|linebreaksbr }}</p>
-            {% if post.image or post.image1 or post.image2 %}
+            {% if post.image %}
                 <div class="image-menu">
-                    {% if post.image %}
-                        <img src="/media/{{ post.image }}" alt="" class="image-menu_images">
-                    {% endif %}
-                    {% if post.image1 %}
-                        <img src="/media/{{ post.image1 }}" alt="" class="image-menu_images">
-                    {% endif %}
-                    {% if post.image2 %}
-                        <img src="/media/{{ post.image2 }}" alt="" class="image-menu_images">
-                    {% endif %}
+                    <img src="{{ post.image.url }}" alt="" class="image-menu_images">
                 </div>
             {% endif %}
                 

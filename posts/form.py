@@ -9,4 +9,4 @@ class Search(forms.Form):
 class PostEdit(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title_image', 'title', 'main_text', 'image', 'image1', 'image2', 'text', 'file']
+        fields = ['title_image', 'title', 'main_text', 'image', 'text', 'file']
