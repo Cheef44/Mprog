@@ -44,14 +44,33 @@
             {% endif %}
         </div>
         {% if post.file %}
-            <div class="file">
-                <div class="file_header">
-                    <p class="file_header-text">Скачать</p>
+            <div class="block-site">
+                <div class="block-site_header">
+                    <p class="block-site_header-text">Скачать</p>
                 </div>
-                <button class="file_button"><a href="/media/{{ post.file }}" download>Скачать</a></button>
+                <button class="block-site_button"><a href="/media/{{ post.file }}" download>Скачать</a></button>
             </div>
         {% endif %}
-        
+        <div class="block-site">
+            <div class="block-site_header">
+                <p class="block-site_header-text">Комментарии</p>
+            </div>
+            {% if user.is_authenticated %}
+                <form method="post" enctype="multipart/form-data" class="block-site_form">{% csrf_token %}
+                    {{ comment.comment }}<!--block-site_input-->
+                    <button class="block-site_save-comment" type="submit" >Отправить</button>
+                </form>
+            {% endif %}
+            {% for comment in comment_information %}
+                <div class="block-site_comment">
+                    <p class="block-site_user">{{ comment.user }}</p>
+                    <p class="block-site_date">Дата публикации: {{ comment.date }}</p>
+                    <p class="block-site_text">{{ comment.comment }}</p>
+                </div>
+            {% endfor %}
+            
+            
+        </div>
     {% endblock %}
 </body>
 </html>

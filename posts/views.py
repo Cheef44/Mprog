@@ -5,16 +5,31 @@ from .models import Post
 from .form import Search
 from .form import PostEdit
 from django.utils import timezone
+from user.form import UserCommentsForm
+from user.models import UserComments
 
 # def post_list(request):
 #     if request.method == 'GET':
 #         post = Post.objects.order_by('-date')
 #         return render(request, 'blog/posts.html', {'post':post})
-    
+
+#В данной функции происходит вывод детального поста и комментариев к посту, а также создание комментариев
 def post_detail(request, id):
-    if request.method == 'GET':
+    if request.method == 'GET' or request.method == 'POST':
         post = get_object_or_404(Post, pk=id)
-        return render(request, 'blog/post_details.html', {'post': post})
+        comment = UserCommentsForm(request.POST)
+        comment_information = UserComments.objects.filter(post__pk = id)
+        if comment.is_valid():
+            comment = comment.save(commit=False)
+            comment.user = request.user
+            comment.date = timezone.now()
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', id=id)
+        else:
+            comment = UserCommentsForm() 
+        return render(request, 'blog/post_details.html', {'post': post, 'comment':comment, 'comment_information':comment_information})
+   
 def post_filter(request):
     if request.method == 'GET':
         form = Search(request.GET)
