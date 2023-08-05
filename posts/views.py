@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from .models import Post
+from .models import PostImage
 from .form import Search
 from .form import PostEdit
+from .form import PostImageDawnlod
 from django.utils import timezone
 from user.form import UserCommentsForm
 from user.models import UserComments
@@ -19,6 +21,7 @@ def post_detail(request, id):
         post = get_object_or_404(Post, pk=id)
         comment = UserCommentsForm(request.POST)
         comment_information = UserComments.objects.filter(post__pk = id)
+        image = PostImage.objects.filter(post__pk = id)
         if comment.is_valid():
             comment = comment.save(commit=False)
             comment.user = request.user
@@ -28,7 +31,7 @@ def post_detail(request, id):
             return redirect('post_detail', id=id)
         else:
             comment = UserCommentsForm() 
-        return render(request, 'blog/post_details.html', {'post': post, 'comment':comment, 'comment_information':comment_information})
+        return render(request, 'blog/post_details.html', {'post': post, 'comment':comment, 'comment_information':comment_information, 'image':image})
    
 def post_filter(request):
     if request.method == 'GET':
@@ -47,15 +50,20 @@ def post_filter(request):
 def post_create(request):
     if request.method == 'POST':
         form = PostEdit(request.POST, request.FILES)
-        if form.is_valid():
+        form_image = PostImageDawnlod(request.POST, request.FILES)
+        if form.is_valid() and form_image.is_valid:
             form = form.save(commit=False)
             form.author = request.user
             form.date = timezone.now()
             form.save()
+            images = request.FILES.getlist('image')
+            for image in images:
+                PostImage.objects.create(post=form, image=image)
             return redirect('post_detail', id=form.pk)
     else:
         form = PostEdit()
-    return render(request, 'blog/post_create.html', {'form':form})
+        form_image = PostImageDawnlod()
+    return render(request, 'blog/post_create.html', {'form':form, 'form_image':form_image})
 
 def post_edit(request, id):
     post = get_object_or_404(Post, pk=id)

@@ -31,9 +31,11 @@
         </div>
         <div class="main-content">
             <p class="main-content_text">{{ post.main_text|linebreaksbr }}</p>
-            {% if post.image %}
+            {% if image %}
                 <div class="image-menu">
-                    <img src="{{ post.image.url }}" alt="" class="image-menu_images">
+                    {% for image in image %}
+                        <img src="{{ image.image.url }}" alt="" class="image-menu_images">
+                    {% endfor %}
                 </div>
             {% endif %}
                 

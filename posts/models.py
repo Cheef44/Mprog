@@ -8,10 +8,15 @@ class Post(models.Model):
     title_image = models.ImageField(upload_to=settings.MEDIA_ROOT + 'users/%Y/%m/%d/', blank=True)
     title = models.CharField(max_length=200)
     main_text = models.TextField()
-    image = models.ImageField(upload_to=settings.MEDIA_ROOT + 'users/%Y/%m/%d/', blank=True)
     text = models.TextField()
     file = models.FileField(upload_to=settings.MEDIA_ROOT + 'users/%Y/%m/%d/', blank=True)
     date = models.DateTimeField(default=timezone.now)
     
     def __str__(self) -> str:
         return self.title
+    
+class PostImage(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=settings.MEDIA_ROOT + 'users/%Y/%m/%d/', blank=True)
+    def __str__(self) -> str:
+        return self.image
