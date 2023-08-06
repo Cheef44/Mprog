@@ -18,5 +18,3 @@ class Post(models.Model):
 class PostImage(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     image = models.ImageField(upload_to=settings.MEDIA_ROOT + 'users/%Y/%m/%d/', blank=True)
-    def __str__(self) -> str:
-        return self.image

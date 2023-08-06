@@ -69,12 +69,24 @@ def post_edit(request, id):
     post = get_object_or_404(Post, pk=id)
     if request.method == 'POST':
         form = PostEdit(request.POST, request.FILES, instance=post)
-        if form.is_valid():
+        form_image = PostImageDawnlod(request.POST, request.FILES)
+        if form.is_valid()  and form_image.is_valid:
             form = form.save(commit=False)
             form.author = request.user
             form.date = timezone.now()
             form.save()
+            images = request.FILES.getlist('image')
+            for image in images:
+                PostImage.objects.create(post=form, image=image)
             return redirect('post_detail', id=form.pk)
     else:
         form = PostEdit(instance=post)
-    return render(request, 'blog/post_create.html', {'form':form})
+        form_image = PostImageDawnlod()
+    return render(request, 'blog/post_create.html', {'form':form, 'form_image':form_image})
+
+def post_delite(request):
+    previous_url = request.META.get('HTTP_REFERER', '')
+    parts = previous_url.split('/')
+    post = get_object_or_404(Post, pk=parts[-1])
+    post.delete()
+    return redirect('post_list')

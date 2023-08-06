@@ -57,8 +57,8 @@
     <link rel="stylesheet" href="{% static 'css/post-detail/main-content/_image/main-content_image.css' %}">
     <link rel="stylesheet" href="{% static 'css/post-detail/main-content/_image/_image-button/main-content_image-button.css' %}">
     <link rel="stylesheet" href="{% static 'css/post-detail/main-content/_text-field/main-content_text-field.css' %}">
-    <link rel="stylesheet" href="{% static 'css/post-detail/file/_add/_add-file/file_add-file.css' %}">
-    <link rel="stylesheet" href="{% static 'css/post-detail/file/_add/file_add.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/block-site/_add/_add-file/file_add-file.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post-detail/block-site/_add/file_add.css' %}">
     <!--login-->
     <link rel="stylesheet" href="{% static 'css/login/login-block/login-block.css' %}">
     <link rel="stylesheet" href="{% static 'css/login/login-block/_input/login-block_input.css' %}">
@@ -74,10 +74,12 @@
     <link rel="stylesheet" href="{% static 'css/user_accaunt/user/user-header/_menu/_status/user-header_status.css' %}">
     <link rel="stylesheet" href="{% static 'css/user_accaunt/user/user-header/_menu/_button/user-header_button.css' %}">
     <link rel="stylesheet" href="{% static 'css/user_accaunt/user/user-header/_menu/_button/_create-post/user-header_create-post.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <title>Mprog</title>
 </head>
-<body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<body class='mb-2 bg-secondary text-white'>
+    
     <header class="header">
         <div>
             <a href="/" class="header_logo">Mprog</a>
@@ -100,7 +102,7 @@
     </header>
         <div class="content">
             {% block content %}
-
+            
             {% endblock %}
         </div>
 </body>
