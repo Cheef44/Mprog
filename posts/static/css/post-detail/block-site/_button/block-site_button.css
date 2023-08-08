@@ -1,7 +1,7 @@
 .block-site_button {
     width: 346px;
     height: 70px;
-    border-radius: 23px;
+    border-radius: 10px;
     border: black solid 3px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     text-align: center;

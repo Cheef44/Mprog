@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.conf import settings
+from PIL import Image
+from django.dispatch import receiver
+from django.db.models.signals import pre_save
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -14,12 +14,13 @@
             <div class="header-post">
                 <div class="header-post_image header-post_image__color">
                     {{ form.title_image }}<!--header-post_image-add-->
-                    
                 </div>
                 <div class="header-post_block-title">
                     {{ form.title }}<!--header-post_title-field-->
-                    <button class="header-post_post-save" type="submit">Сохранить</button>
-                    <button class="header-post_post-save" type="submit"><a href='{% url "post_delite" %}'>Удалить</a></button>
+                    <div>
+                        <button class="header-post_button" formaction="{% url "post_delite" %}">Удалить</button>
+                        <button class="header-post_button" type="submit">Сохранить</button>
+                    </div>
                 </div>
             </div>
             <div class="main-content">
@@ -27,7 +28,7 @@
                 <div class="main-content_image">
                     <div class="main-content_image-button">{{ form_image }}</div><!--main-content_image-button-->
                 </div>
-                <div class="main-content_text-field"></div>{{ form.text }}<!--main-content_text-field-->
+                <div class="main-content_text-field">{{ form.text }}</div><!--main-content_text-field-->
             </div>
             <div class="block-site">
                 <div class="block-site_header">

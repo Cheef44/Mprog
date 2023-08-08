@@ -10,3 +10,9 @@ class UserComments(models.Model):
     date = models.DateTimeField(default=timezone.now)
     def __str__(self) -> str:
         return self.comment
+    
+class UserStatus(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.TextField()
+    def __str__(self) -> str:
+        return self.status

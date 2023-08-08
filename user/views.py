@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from posts.models import Post
+from .models import UserStatus
 
 def user_registration(request):
     if request.method == 'POST':
@@ -34,4 +35,5 @@ def user_accaunt(request, id):
     if request.method == "GET" and request.user.is_authenticated == True:
         user = get_object_or_404(User, id=id)
         post = Post.objects.filter(author__id =id).order_by('-date')
-        return render(request, 'user_accaunt/user_accaunt.html', {'user':user, 'post':post})
+        user_status = UserStatus.objects.filter(user__id = id).order_by()
+        return render(request, 'user_accaunt/user_accaunt.html', {'user':user, 'post':post, 'user_status':user_status})

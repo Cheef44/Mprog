@@ -14,7 +14,11 @@
                 </div>
                 <div class="user-header_menu">
                     <p class="user-header_username">{{ user.username }}</p>
-                    <p class="user-header_status">Статус:</p>
+                    {% if user_status %}
+                        {% for status in user_status %}
+                            <p class="user-header_status">Статус: {{ status.status|linebreaksbr }}</p>
+                        {% endfor %}
+                    {% endif %}
                     <div class="user-header_button">
                         <button class="user-header_create-post"><a href="{% url 'post_creater' %}">Создать пост</a></button>
                         <button class="user-header_logout"><a href="{% url 'user_logout' %}">Выйти</a></button>
@@ -38,7 +42,6 @@
                 {% endfor %}
             </div>
         </div>
-        
     {% endblock %}
 </body>
 </html>

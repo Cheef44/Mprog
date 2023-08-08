@@ -69,19 +69,21 @@ def post_edit(request, id):
     post = get_object_or_404(Post, pk=id)
     if request.method == 'POST':
         form = PostEdit(request.POST, request.FILES, instance=post)
-        form_image = PostImageDawnlod(request.POST, request.FILES)
+        form_image = PostImageDawnlod(request.POST, request.FILES, instance=post)
         if form.is_valid()  and form_image.is_valid:
             form = form.save(commit=False)
             form.author = request.user
             form.date = timezone.now()
             form.save()
+            if id:
+                form.postimage_set.all().delete()
             images = request.FILES.getlist('image')
             for image in images:
                 PostImage.objects.create(post=form, image=image)
             return redirect('post_detail', id=form.pk)
     else:
         form = PostEdit(instance=post)
-        form_image = PostImageDawnlod()
+        form_image = PostImageDawnlod(instance=post)
     return render(request, 'blog/post_create.html', {'form':form, 'form_image':form_image})
 
 def post_delite(request):

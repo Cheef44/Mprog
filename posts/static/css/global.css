@@ -21,3 +21,7 @@ textarea {
     outline: none;
     border: solid black 2px;
 }
+
+p {
+    text-align: justify;
+}
