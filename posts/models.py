@@ -11,7 +11,7 @@ class Post(models.Model):
     title_image = models.ImageField(upload_to=settings.MEDIA_ROOT + 'users/%Y/%m/%d/', blank=True)
     title = models.CharField(max_length=200)
     main_text = models.TextField()
-    text = models.TextField()
+    text = models.TextField(blank=True)
     file = models.FileField(upload_to=settings.MEDIA_ROOT + 'users/%Y/%m/%d/', blank=True)
     date = models.DateTimeField(default=timezone.now)
     

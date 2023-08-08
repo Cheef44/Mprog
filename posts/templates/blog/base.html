@@ -89,9 +89,9 @@
         </div>
         
         <nav class="header_menu">
-            <a href="#" class="header_text-menu">Новости</a>
-            <a href="#" class="header_text-menu">Посты</a>
-            <a href="#" class="header_text-menu">Пользователи</a>
+            <!--<a href="#" class="header_text-menu">Новости</a>-->
+            <!--<a href="#" class="header_text-menu">Посты</a>-->
+            <!--<a href="#" class="header_text-menu">Пользователи</a>-->
             {% if user.is_authenticated %}
                 <a href="{% url 'user_accaunt' id=user.id %}" class="header_text-menu">{{ user.username }}</a>
             {% else %}
