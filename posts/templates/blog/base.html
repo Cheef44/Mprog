@@ -6,19 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Mprog</title>
+    <meta name="description" content="Mprog, сайт на котором начинающие кодеры могут выложить проекты" />
+    <link type="image/png" sizes="48x48" rel="icon" href="{% static 'images/ico/favicon.png' %}">
+    <title>Mprog - сайт для программиста</title>
+    <meta name="yandex-verification" content="2a81bbb666462b03" />
 </head>
 <body class="background">
-    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(94572988, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/94572988" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <header class="header">
         <div>
             <a href="/" class="header_logo">Mprog</a>
             <form class="header_enter" method="GET" enctype="multipart/form-data">
                 {{ search.input }}<!--header_enter-->
             </form>
-            
+
         </div>
-        
+
         <nav class="header_menu">
             <!--<a href="#" class="header_text-menu">Новости</a>-->
             <!--<a href="#" class="header_text-menu">Посты</a>-->
@@ -32,7 +51,7 @@
     </header>
         <div class="content">
             {% block content %}
-            
+
             {% endblock %}
         </div>
 </body>
